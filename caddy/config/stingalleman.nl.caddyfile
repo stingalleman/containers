@@ -1,32 +1,32 @@
 stingalleman.nl {
-  tls {
-    dns cloudflare {env.CF_API_TOKEN}
-  }
+	tls {
+		dns cloudflare {env.CF_API_TOKEN}
+	}
 
-  respond 200 {
-    body "maintenance..."
-  }
+	respond 200 {
+		body "maintenance..."
+	}
 }
 
 # CDN
 cdn.stingalleman.nl {
-  tls {
-    dns cloudflare {env.CF_API_TOKEN}
-  }
+	tls {
+		dns cloudflare {env.CF_API_TOKEN}
+	}
 
-  root * /storage/cdn.stingalleman.nl
-  file_server browse
+	root * /storage/cdn.stingalleman.nl
+	file_server browse
 
-  encode zstd gzip
+	encode zstd gzip
 
-  log {
-    output file /logs/cdn.log
-    format console
-  }
+	log {
+		output file /logs/cdn.log
+		format console
+	}
 }
 
 zeus.stingalleman.nl {
-  respond 200 {
-    body "aa"
-  }
+	respond 200 {
+		body "aa"
+	}
 }

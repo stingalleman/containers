@@ -1,5 +1,5 @@
 (cf-tls) {
-  tls {
-    dns cloudflare {env.CF_API_TOKEN}
-  }
+	tls {
+		dns cloudflare {env.CF_API_TOKEN}
+	}
 }

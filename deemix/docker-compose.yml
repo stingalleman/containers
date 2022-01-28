@@ -10,5 +10,3 @@ services:
       # - PGID=1000
       # - ARL=xxx
       - DEEZUI=false
-    ports:
-      - 6595:6595

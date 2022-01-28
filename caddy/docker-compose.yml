@@ -8,10 +8,9 @@ services:
       context: ${CONTAINERS_PATH}/caddy
       dockerfile: ./Dockerfile
     restart: unless-stopped
-    network_mode: host
-    expose:
-      - 80
-      - 443
+    ports:
+      - "80:80"
+      - "443:443"
     volumes:
       - "$CONTAINERS_PATH/caddy/Caddyfile:/etc/caddy/Caddyfile" # root caddyfile
       - "$CONTAINERS_PATH/caddy/config:/conf" # caddy configs

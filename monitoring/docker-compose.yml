@@ -2,10 +2,10 @@ version: "3.8"
 
 services:
   grafana:
+    container_name: grafana
     image: grafana/grafana:latest
-    expose: [3000]
-    ports:
-      - "3000:3000"
+    expose:
+      - 3000
     user: "1000:1000"
     volumes:
       - "$CONTAINERS_PATH/monitoring/data/grafana/data:/var/lib/grafana"

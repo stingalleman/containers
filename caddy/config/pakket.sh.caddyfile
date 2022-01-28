@@ -1,0 +1,30 @@
+pakket.sh {
+  tls {
+    dns cloudflare {env.CF_API_TOKEN}
+  }
+
+  respond 200 {
+    body "wip - check out https://github.com/pakket-project/pakket"
+  }
+}
+
+# Pakket packages
+core.pakket.sh {
+  tls {
+    dns cloudflare {env.CF_API_TOKEN}
+  }
+
+  root * /storage/core.pakket.sh
+  file_server browse
+
+  @filterFile path_regexp ^.*/(.+\.(zip|xz|iso|gz))$
+
+  handle @filterFile {
+    header Content-Disposition "attachment; filename=\"{http.request.orig_uri.path.file}\""
+  }
+
+  log {
+    output file /logs/packages.log
+    format console
+  }
+}

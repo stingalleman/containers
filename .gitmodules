@@ -1,0 +1,3 @@
+[submodule "website/stingalleman.dev"]
+	path = website/stingalleman.dev
+	url = git@github.com:stingalleman/stingalleman.dev.git

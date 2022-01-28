@@ -1,0 +1,4 @@
+# https://caddyserver.com/docs/caddyfile
+
+import /conf/*.caddyfile
+# import /conf/snippets/*.caddyfile

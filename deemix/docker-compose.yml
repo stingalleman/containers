@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  deemix:
+    image: registry.gitlab.com/bockiii/deemix-docker
+    volumes:
+      - "$CONTAINERS_PATH/deemix/downloads:/downloads"
+      - "$CONTAINERS_PATH/deemix/config:/config"
+    environment:
+      # - PUID=1000
+      # - PGID=1000
+      # - ARL=xxx
+      - DEEZUI=false
+    ports:
+      - 6595:6595

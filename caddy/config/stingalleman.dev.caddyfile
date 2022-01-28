@@ -1,0 +1,19 @@
+stingalleman.dev {
+  tls {
+    dns cloudflare {env.CF_API_TOKEN}
+  }
+
+  @root {
+    host stingalleman.dev
+  }
+
+  redir @root https://stingalleman.nl
+}
+
+cdn.stingalleman.dev {
+  tls {
+    dns cloudflare {env.CF_API_TOKEN}
+  }
+
+  redir https://cdn.stingalleman.nl{uri} permanent
+}

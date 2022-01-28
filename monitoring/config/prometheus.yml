@@ -1,0 +1,63 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+  - job_name: "prometheus"
+    # Override the global default and scrape targets from this job every 5 seconds.
+    # scrape_interval: 5s
+    static_configs:
+      - targets: ["localhost:9090"]
+
+  - job_name: "blackbox"
+    metrics_path: /probe
+    scrape_interval: 5s
+    params:
+      module: [http_2xx] # Look for a HTTP 200 response.
+    static_configs:
+      - targets:
+          - https://stingalleman.dev
+          - https://core.pakket.sh
+          - https://pakket.sh
+          - https://cdn.stingalleman.dev
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: blackbox:9115 # The blackbox exporter's real hostname:port.
+
+  - job_name: "node_exporter"
+    scrape_interval: 5s
+    basic_auth:
+      username: prometheus
+      password: "VyxUi5%8i!9^"
+    static_configs:
+      - targets: [10.10.10.2:9100]
+        labels:
+          instance: "gemairo"
+          city: "Falkenstein"
+          latitude: 50.47788
+          longitude: 12.37129
+
+      - targets: [207.254.31.169:9100]
+        labels:
+          instance: "apollo"
+          city: "Dublin"
+          latitude: 53.350140
+          longitude: -6.266155
+
+      - targets: [207.254.39.123:9100]
+        labels:
+          instance: "volcano"
+          city: "Las Vegas"
+          latitude: 36.114647
+          longitude: -115.172813
+
+      - targets: [10.10.10.1:9100]
+        labels:
+          instance: "zeus"
+          city: "Falkenstein"
+          latitude: 50.47788
+          longitude: 12.37129

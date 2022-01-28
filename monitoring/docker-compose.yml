@@ -1,0 +1,46 @@
+version: "3.8"
+
+services:
+  grafana:
+    image: grafana/grafana:latest
+    expose: [3000]
+    ports:
+      - "3000:3000"
+    user: "1000:1000"
+    volumes:
+      - "$CONTAINERS_PATH/monitoring/data/grafana/data:/var/lib/grafana"
+      - "$CONTAINERS_PATH/monitoring/config/grafana.ini:/etc/grafana/grafana.ini"
+    # env_file: ../.env
+    environment:
+      - "GF_INSTALL_PLUGINS=grafana-github-datasource,grafana-worldmap-panel,grafana-clock-panel,mxswat-separator-panel,flant-statusmap-panel"
+
+  blackbox:
+    container_name: blackbox
+    image: prom/blackbox-exporter:master
+    user: "1000:1000"
+    command:
+      - "--config.file=/config/blackbox.yml"
+    ports:
+      - 9115:9115
+    expose: [9115]
+    volumes:
+      - "$CONTAINERS_PATH/monitoring/config/blackbox:/config"
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    restart: unless-stopped
+    user: "1000:1000"
+    volumes:
+      - $CONTAINERS_PATH/monitoring/config/prometheus.yml:/etc/prometheus/prometheus.yml
+      - $CONTAINERS_PATH/monitoring/data/prometheus:/prometheus
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+      - "--web.console.libraries=/etc/prometheus/console_libraries"
+      - "--web.console.templates=/etc/prometheus/consoles"
+      - "--web.enable-lifecycle"
+      - "--web.enable-admin-api"
+    expose: [9090]
+    ports:
+      - 9090:9090

@@ -1,0 +1,6 @@
+.env
+misc/certificates/*
+!misc/certificates/README.md
+traefik/dynamic/.htpasswd
+
+mailcow

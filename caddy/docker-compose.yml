@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  caddy:
+    image: local-caddy
+    env_file: ../.env
+    build:
+      context: ${CONTAINERS_PATH}/caddy
+      dockerfile: ./Dockerfile
+    restart: unless-stopped
+    network_mode: host
+    expose:
+      - 80
+      - 443
+    volumes:
+      - "$CONTAINERS_PATH/caddy/Caddyfile:/etc/caddy/Caddyfile" # root caddyfile
+      - "$CONTAINERS_PATH/caddy/config:/conf" # caddy configs
+      - "$CONTAINERS_PATH/caddy/data:/storage"
+      - "$CONTAINERS_PATH/deemix/downloads:/storage/cdn.stingalleman.nl/deemix-downloads" # deemix downloads
+      - "$CONTAINERS_PATH/caddy/logs:/logs" # logs
+      - "caddy_data:/data"
+      - "caddy_config:/config"
+
+volumes:
+  caddy_data:
+  caddy_config:

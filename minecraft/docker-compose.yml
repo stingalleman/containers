@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  minecraft:
+    image: itzg/minecraft-server:java17
+    container_name: minecraft
+    # user: "1000:1000"
+    network_mode: host
+    environment:
+      EULA: "true"
+      TYPE: "PAPER"
+      # CUSTOM_SERVER: "/data/paper-1.18.jar"
+      # VERSION: 1.18
+      MEMORY: 12G
+      EXEC_DIRECTLY: "true"
+      STOP_SERVER_ANNOUNCE_DELAY: 10
+      TZ: Europe/Amsterdam
+      USE_AIKAR_FLAGS: "true"
+      GUI: "false"
+      # ENABLE_AUTOPAUSE: "TRUE"
+    tty: true
+    stdin_open: true
+    #restart: unless-stopped
+    volumes:
+      - $CONTAINERS_PATH/minecraft/data:/data

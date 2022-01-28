@@ -1,0 +1,8 @@
+version: "3.8"
+
+services:
+  website:
+    build: $CONTAINERS_PATH/website/stingalleman.dev
+    image: website:latest
+    restart: unless-stopped
+    expose: [80]

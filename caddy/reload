@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cd "${0%/*}" || exit 1
+
+echo "reloading config..."
+
+../compose --env-file ../.env exec caddy caddy reload --config /etc/caddy/Caddyfile

@@ -1,4 +1,10 @@
-# https://caddyserver.com/docs/caddyfile
+{
+	email me@stingalleman.nl
+}
 
 import /conf/*.caddyfile
 # import /conf/snippets/*.caddyfile
+
+http://localhost:1990 {
+	metrics /metrics
+}

@@ -61,3 +61,7 @@ scrape_configs:
           city: "Falkenstein"
           latitude: 50.47788
           longitude: 12.37129
+
+  - job_name: caddy
+    static_configs:
+      - targets: ["localhost:1990"]

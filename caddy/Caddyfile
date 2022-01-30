@@ -5,6 +5,6 @@
 import /conf/*.caddyfile
 # import /conf/snippets/*.caddyfile
 
-http://localhost:1990 {
+http://:1990 {
 	metrics /metrics
 }

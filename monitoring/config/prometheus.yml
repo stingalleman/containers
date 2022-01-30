@@ -64,4 +64,10 @@ scrape_configs:
 
   - job_name: caddy
     static_configs:
-      - targets: ["localhost:1990"]
+      - targets: ["caddy:1990"]
+      labels:
+        labels:
+          instance: "gemairo"
+          city: "Falkenstein"
+          latitude: 50.47788
+          longitude: 12.37129

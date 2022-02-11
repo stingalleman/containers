@@ -1,9 +1,3 @@
-(media-auth) {
-	basicauth {
-		{env.BASIC_USER} {env.BASIC_HASH}
-	}
-}
-
 stingalleman.dev {
 	tls {
 		dns cloudflare {env.CF_API_TOKEN}
@@ -39,54 +33,4 @@ media.stingalleman.dev {
 	}
 
 	reverse_proxy http://jellyfin:8096
-}
-
-radarr.stingalleman.dev {
-	tls {
-		dns cloudflare {env.CF_API_TOKEN}
-	}
-
-	import media-auth
-
-	reverse_proxy http://radarr:7878
-}
-
-deluge.stingalleman.dev {
-	tls {
-		dns cloudflare {env.CF_API_TOKEN}
-	}
-
-	import media-auth
-
-	reverse_proxy http://vpn:8112
-}
-
-sonarr.stingalleman.dev {
-	tls {
-		dns cloudflare {env.CF_API_TOKEN}
-	}
-
-	import media-auth
-
-	reverse_proxy http://sonarr:8989
-}
-
-jackett.stingalleman.dev {
-	tls {
-		dns cloudflare {env.CF_API_TOKEN}
-	}
-
-	import media-auth
-
-	reverse_proxy http://jackett:9117
-}
-
-bazarr.stingalleman.dev {
-	tls {
-		dns cloudflare {env.CF_API_TOKEN}
-	}
-
-	import media-auth
-
-	reverse_proxy http://bazarr:6767
 }

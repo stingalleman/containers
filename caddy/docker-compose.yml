@@ -18,6 +18,7 @@ services:
       - "$CONTAINERS_PATH/caddy/data:/storage"
       - "$CONTAINERS_PATH/deemix/downloads:/storage/cdn.stingalleman.nl/deemix-downloads" # deemix downloads
       - "$CONTAINERS_PATH/caddy/logs:/logs" # logs
+      - "$CONTAINERS_PATH/caddy/certificates:/certs" # certs
       - "caddy_data:/data"
       - "caddy_config:/config"
 

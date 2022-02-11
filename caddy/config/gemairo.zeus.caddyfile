@@ -1,0 +1,47 @@
+(gem-tls) {
+	tls me@stingalleman.nl {
+		ca_root /certs/zeus_root_ca.crt
+		ca https://ca.zeus/acme/acme/directory
+	}
+}
+
+(media-auth) {
+	basicauth {
+		{env.BASIC_USER} {env.BASIC_HASH}
+	}
+}
+
+gemairo.zeus {
+	respond "gemairo"
+}
+
+radarr.gemairo.zeus {
+	import gem-tls
+
+	reverse_proxy http://radarr:7878
+}
+
+deluge.gemairo.zeus {
+	import gem-tls
+
+	reverse_proxy http://vpn:8112
+}
+
+sonarr.gemairo.zeus {
+	import gem-tls
+
+	reverse_proxy http://sonarr:8989
+}
+
+jackett.gemairo.zeus {
+	import gem-tls
+	import media-auth
+
+	reverse_proxy http://jackett:9117
+}
+
+bazarr.gemairo.zeus {
+	import gem-tls
+
+	reverse_proxy http://bazarr:6767
+}

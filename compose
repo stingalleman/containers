@@ -3,9 +3,9 @@
 docker compose -p general --env-file ./.env \
 -f ./caddy/docker-compose.yml \
 -f ./media/docker-compose.yml \
--f ./squid/docker-compose.yml \
 -f ./monitoring/docker-compose.yml \
 -f ./postgres/docker-compose.yml \
+-f ./discordbot/docker-compose.yml \
 "$@"
 
 # -f ./matrix/docker-compose.yml \

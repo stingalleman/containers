@@ -7,6 +7,7 @@ services:
     expose:
       - 3000
     user: "1000:1000"
+    restart: unless-stopped
     volumes:
       - "$CONTAINERS_PATH/monitoring/data/grafana/data:/var/lib/grafana"
       - "$CONTAINERS_PATH/monitoring/config/grafana.ini:/etc/grafana/grafana.ini"
@@ -18,6 +19,7 @@ services:
     container_name: blackbox
     image: prom/blackbox-exporter:master
     user: "1000:1000"
+    restart: unless-stopped
     command:
       - "--config.file=/config/blackbox.yml"
     ports:

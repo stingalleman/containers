@@ -6,6 +6,8 @@ docker compose -p general --env-file ./.env \
 -f ./monitoring/docker-compose.yml \
 -f ./postgres/docker-compose.yml \
 -f ./discordbot/docker-compose.yml \
+-f ./sonarqube/docker-compose.yml \
+-f ./matrix/docker-compose.yml \
 "$@"
 
 # -f ./matrix/docker-compose.yml \

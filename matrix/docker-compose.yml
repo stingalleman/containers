@@ -1,0 +1,12 @@
+version: '3.3'
+services:
+    synapse:
+      volumes:
+        - "$CONTAINERS_PATH/matrix/data:/data"
+      image: 'matrixdotorg/synapse:latest'
+      # ports:
+      #   - '8008:8008'
+      environment:
+        - "UID=1000"
+        - "GUID=1000"
+        - "TZ=Europe/Amsterdam"

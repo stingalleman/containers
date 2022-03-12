@@ -1,0 +1,3 @@
+sonar.stats.fm {
+	reverse_proxy http://sonarqube:9000
+}

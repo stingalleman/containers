@@ -27,7 +27,7 @@ grafana.stingalleman.dev {
 	reverse_proxy http://grafana:3000
 }
 
-media.stingalleman.dev {
+media.stingalleman.dev media.stingalleman.nl {
 	tls {
 		dns cloudflare {env.CF_API_TOKEN}
 	}

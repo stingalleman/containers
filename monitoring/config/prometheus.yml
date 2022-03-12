@@ -16,10 +16,10 @@ scrape_configs:
       module: [http_2xx] # Look for a HTTP 200 response.
     static_configs:
       - targets:
-          - https://stingalleman.dev
+          - https://stingalleman.nl
           - https://core.pakket.sh
           - https://pakket.sh
-          - https://cdn.stingalleman.dev
+          - https://cdn.stingalleman.nl
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
@@ -37,9 +37,9 @@ scrape_configs:
       - targets: [10.10.10.2:9100]
         labels:
           instance: "gemairo"
-          city: "Falkenstein"
-          latitude: 50.47788
-          longitude: 12.37129
+          city: "Amsterdam"
+          latitude: 52.33626806224156
+          longitude: 4.886583946358772
 
       - targets: [207.254.31.169:9100]
         labels:
@@ -57,16 +57,16 @@ scrape_configs:
 
       - targets: [10.10.10.1:9100]
         labels:
-          instance: "zeus"
-          city: "Falkenstein"
-          latitude: 50.47788
-          longitude: 12.37129
+          instance: "chernobyl"
+          city: "Amsterdam"
+          latitude: 52.33626806224156
+          longitude: 4.886583946358772
 
   - job_name: caddy
     static_configs:
       - targets: ["caddy:1990"]
         labels:
           instance: "gemairo"
-          city: "Falkenstein"
-          latitude: 50.47788
-          longitude: 12.37129
+          city: "Amsterdam"
+          latitude: 52.33626806224156
+          longitude: 4.886583946358772

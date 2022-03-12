@@ -9,7 +9,7 @@ pakket.sh {
 }
 
 # Pakket packages
-core.pakket.sh {
+core.pakket.sh core2.pakket.sh core3.pakket.sh {
 	tls {
 		dns cloudflare {env.CF_API_TOKEN}
 	}
@@ -27,4 +27,12 @@ core.pakket.sh {
 		output file /logs/packages.log
 		format console
 	}
+}
+
+sonar.pakket.sh {
+	tls {
+		dns cloudflare {env.CF_API_TOKEN}
+	}
+
+	reverse_proxy http://sonarqube:9000
 }

@@ -1,0 +1,49 @@
+(gem-tls) {
+	tls me@stingalleman.nl {
+		ca_root /certs/chernobyl_root_ca.crt
+		ca https://ca.boem/acme/acme/directory
+	}
+}
+
+(basic-auth) {
+	basicauth {
+		{env.BASIC_USER} {env.BASIC_HASH}
+	}
+}
+
+gemairo.boem {
+	import gem-tls
+
+	respond "gemairo"
+}
+
+radarr.gemairo.boem {
+	import gem-tls
+
+	reverse_proxy http://radarr:7878
+}
+
+deluge.gemairo.boem {
+	import gem-tls
+
+	reverse_proxy http://vpn:8112
+}
+
+sonarr.gemairo.boem {
+	import gem-tls
+
+	reverse_proxy http://sonarr:8989
+}
+
+jackett.gemairo.boem {
+	import gem-tls
+	import basic-auth
+
+	reverse_proxy http://jackett:9117
+}
+
+bazarr.gemairo.boem {
+	import gem-tls
+
+	reverse_proxy http://bazarr:6767
+}

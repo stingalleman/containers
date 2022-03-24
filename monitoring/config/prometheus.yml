@@ -47,7 +47,7 @@ scrape_configs:
           latitude: 52.33626806224156
           longitude: 4.886583946358772
 
-      - targets: [10.10.10.2:9100]
+      - targets: [10.10.10.1:9100]
         labels:
           instance: "reactor"
           city: "Amsterdam"
